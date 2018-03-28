@@ -41,5 +41,5 @@ def get_medal(name):
 
 if __name__ == "__main__":
     print("Use the following url to connect the bot to your server")
-    print(oauth_url("306257817734742017"))
-    bot.run("MzA2MjU3ODE3NzM0NzQyMDE3.DZYcng.1qMvGCKvJMGbkrG6w18uRyXVPio")
+    print(oauth_url(""))
+    bot.run("")
