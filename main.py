@@ -10,6 +10,7 @@ names = [x.get("name").lower() for x in requests.post("https://www.khuxbot.com/a
                       data=json.dumps({"filter":{"rarity":6},"format":["name"]}),
                       headers={"Content-Type":"application/json"}).json()]
 # Very ugly, all it does is retrieves the names of all medals from the server (Run this on bot start for performance reasons
+config = json.load(open("config.json", "r"))
 
 @bot.command()
 async def get(*args):
@@ -41,5 +42,5 @@ def get_medal(name):
 
 if __name__ == "__main__":
     print("Use the following url to connect the bot to your server")
-    print(oauth_url(""))
-    bot.run("")
+    print(oauth_url(config.get("client_id")))
+    bot.run(config.get("token_secret"))
