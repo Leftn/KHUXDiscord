@@ -8,3 +8,11 @@ A discord bot which will retrieve medals from the khuxbot.com database. If there
     python main.py
     
 Then just go to the printed url to invite the bot to your server
+
+
+# Usage
+Usage is as simple as a `/get`
+
+    /get <medal>
+
+Medal names are case insensitive and will 
