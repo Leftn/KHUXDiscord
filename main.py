@@ -5,6 +5,8 @@ from discord import Embed
 from discord.utils import oauth_url
 from discord.ext import commands
 
+import helpers
+
 bot = commands.Bot(command_prefix="/")
 names = [x.get("name").lower() for x in requests.post("https://www.khuxbot.com/api/v2/get",
                       data=json.dumps({"filter":{"rarity":6},"format":["name"]}),
@@ -14,12 +16,13 @@ config = json.load(open("config.json", "r"))
 
 @bot.command()
 async def get(*args):
-    embed = Embed()
     medal_data = get_medal(args)
+    embed = Embed(inline=True, colour=helpers.map_element_to_colour(medal_data.get("element")))
     if not medal_data.get("error"): # No errors here
         embed.add_field(name=medal_data.get("name"), value=medal_data.get("notes"))
         url = "https://www.khuxbot.com"+medal_data.get("image_link")
         embed.set_image(url=url)
+        embed.add_field(name=medal_data.get("element"), value=medal_data.get("direction"))
         await bot.say("", embed=embed)
     else:
         await bot.say("Could not find medal **{}**\nDid you mean:\n{}".format(" ".join(args), "\n".join(medal_data.get("error"))))
