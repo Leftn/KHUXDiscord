@@ -33,7 +33,7 @@ def create_embed(medal_data, url):
     emojis = {x.name: x for x in bot.get_all_emojis()}
     embed.set_image(url=url)
     embed.add_field(name=medal_data.get("element") + str(emojis.get(medal_data.get("element"))),
-                    value=medal_data.get("direction"), inline=False)
+                    value=medal_data.get("direction") + str(emojis.get(medal_data.get("direction"))), inline=False)
     embed.add_field(name="", value="", inline=True)
     return embed
 
