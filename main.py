@@ -34,7 +34,6 @@ def create_embed(medal_data, url):
     embed.set_image(url=url)
     embed.add_field(name=medal_data.get("element") + str(emojis.get(medal_data.get("element"))),
                     value=medal_data.get("direction") + str(emojis.get(medal_data.get("direction"))), inline=False)
-    embed.add_field(name="", value="", inline=True)
     return embed
 
 
